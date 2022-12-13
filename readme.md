@@ -35,17 +35,50 @@ read the `readme.md` of `templ`.
 ### lates example
 
 ```go
+// templates/index/helloworld.templ
+package index
+
+templ HelloWorld() {
+    <h1>Hello, world!</h1>
+}
+```
+
+```go
+// templates/index/param.templ
+package index
+
+templ Param(param string) {
+    <h1>{param}</h1>
+}
+```
+
+run `templ generate`.
+
+```go
+// main.go
 package main
 
-import "github.com/snowmerak/lates"
+import (
+	"example/templates/index"
+
+	"github.com/a-h/templ"
+	"github.com/snowmerak/lates"
+)
 
 func main() {
-    late := lates.New()
+	late := lates.New()
 
-    late.Get("/", helloworld.Get)
+	late.Get("/", func(c *lates.Context) templ.Component {
+		return index.HelloWorld()
+	})
 
-    if err := late.ListenAndServe(":8080"); err != nil {
-        panic(err)
-    }
+	late.Get("/:param", func(c *lates.Context) templ.Component {
+		return index.Param(c.GetPathVariable("param"))
+	})
+
+	if err := late.ListenAndServe(":8080"); err != nil {
+		panic(err)
+	}
 }
+
 ```
