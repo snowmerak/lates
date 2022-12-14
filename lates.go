@@ -51,6 +51,10 @@ func (l *Lates) ListenAndServe2(addr string) error {
 	return l.server.ListenAndServe()
 }
 
+func (l *Lates) AddCssPath(pathes ...string) {
+	l.cssPathes = append(l.cssPathes, pathes...)
+}
+
 func (l *Lates) ApplySakuraDark() {
 	l.router.GET("/sakura-dark.css", func(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
 		w.Header().Set("Content-Type", "text/css")
