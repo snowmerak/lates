@@ -1,0 +1,14 @@
+package made
+
+templ Layout(child templ.Component, cssPath ...string) {
+    <html>
+        <head>
+            for _, path := range cssPath {
+                <link rel="stylesheet" href={path} />
+            }
+        </head>
+        <body>
+            {! child}
+        </body>
+    </html>
+}
