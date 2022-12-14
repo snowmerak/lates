@@ -7,6 +7,7 @@ import (
 
 	"github.com/a-h/templ"
 	"github.com/julienschmidt/httprouter"
+	"github.com/snowmerak/lates/made"
 )
 
 func (l *Lates) Get(path string, handler func(c *Context) templ.Component) {
@@ -48,6 +49,7 @@ func (l *Lates) AddRouter(method string, path string, handler func(c *Context) t
 			w: w,
 		}
 		comp := handler(c)
+		comp = made.Layout(comp, l.cssPathes...)
 		templ.Handler(comp).ServeHTTP(w, r)
 	})
 

@@ -11,6 +11,8 @@ import (
 type Lates struct {
 	router *httprouter.Router
 	server *http.Server
+
+	cssPathes []string
 }
 
 func New() *Lates {
@@ -47,4 +49,12 @@ func (l *Lates) ListenAndServe2(addr string) error {
 	}
 
 	return l.server.ListenAndServe()
+}
+
+func (l *Lates) ApplySakuraDark() {
+	l.router.GET("/sakura-dark.css", func(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
+		w.Header().Set("Content-Type", "text/css")
+		w.Write([]byte(SakuraDarkCSS))
+	})
+	l.cssPathes = append(l.cssPathes, "/sakura-dark.css")
 }
