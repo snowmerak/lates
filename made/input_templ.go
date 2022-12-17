@@ -43,6 +43,22 @@ func Input(name, placeholder, typ string) templ.Component {
 		if err != nil {
 			return err
 		}
+		_, err = templBuffer.WriteString(" id=")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(templ.EscapeString(name))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
 		_, err = templBuffer.WriteString(" name=")
 		if err != nil {
 			return err
