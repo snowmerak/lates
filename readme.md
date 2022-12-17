@@ -82,3 +82,51 @@ func main() {
 }
 
 ```
+
+#### simple signup page
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/a-h/templ"
+	"github.com/snowmerak/lates"
+	"github.com/snowmerak/lates/made"
+)
+
+func main() {
+	l := lates.New()
+
+	l.ApplySakuraDark()
+
+	l.Get("/signup", func(c *lates.Context) templ.Component {
+		return made.Form("form", "/", "post",
+			made.Label("input your name", "name"),
+			made.Input("name", "input your name", "text"),
+			made.Break(),
+			made.Label("input your email", "email"),
+			made.Input("email", "input your email", "text"),
+			made.Break(),
+			made.Label("input your password", "password"),
+			made.Input("password", "input your password", "text"),
+			made.Break(),
+			made.Input("submnit", "submit", "submit"),
+			made.Space(),
+			made.Input("reset", "reset", "reset"),
+		)
+	})
+
+	l.Post("/signup", func(c *lates.Context) templ.Component {
+		name := c.GetFormData("name")
+		email := c.GetFormData("email")
+		password := c.GetFormData("password")
+		return made.Paragraph(fmt.Sprintf("name: %s, email: %s, password: %s\n", name, email, password))
+	})
+
+	if err := l.ListenAndServe(":8080"); err != nil {
+		panic(err)
+	}
+}
+```
