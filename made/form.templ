@@ -1,0 +1,9 @@
+package made
+
+templ Form(name string, url string, method string, children ...templ.Component) {
+    <form action={url} method={method} accept-charset="utf-8" name={name} id={name}>
+        for _, child := range children {
+            {! child}
+        }
+    </form>
+}
