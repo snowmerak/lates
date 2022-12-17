@@ -1,0 +1,23 @@
+package made
+
+templ Join(comp ...templ.Component) {
+    for _, c := range comp {
+        {! c}
+    }
+}
+
+templ OrderedList(comp ...templ.Component) {
+    <ol>
+        for _, c := range comp {
+            <li>{! c}</li>
+        }
+    </ol>
+}
+
+templ UnorderedList(comp ...templ.Component) {
+    <ul>
+        for _, c := range comp {
+            <li>{! c}</li>
+        }
+    </ul>
+}

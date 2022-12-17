@@ -120,3 +120,201 @@ func Label(text string, target string) templ.Component {
 	})
 }
 
+func Header1(text string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		templBuffer, templIsBuffer := w.(*bytes.Buffer)
+		if !templIsBuffer {
+			templBuffer = new(bytes.Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		var_4 := templ.GetChildren(ctx)
+		if var_4 == nil {
+			var_4 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		// Element (standard)
+		_, err = templBuffer.WriteString("<h1>")
+		if err != nil {
+			return err
+		}
+		// StringExpression
+		_, err = templBuffer.WriteString(templ.EscapeString(text))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</h1>")
+		if err != nil {
+			return err
+		}
+		if !templIsBuffer {
+			_, err = io.Copy(w, templBuffer)
+		}
+		return err
+	})
+}
+
+func Header2(text string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		templBuffer, templIsBuffer := w.(*bytes.Buffer)
+		if !templIsBuffer {
+			templBuffer = new(bytes.Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		var_5 := templ.GetChildren(ctx)
+		if var_5 == nil {
+			var_5 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		// Element (standard)
+		_, err = templBuffer.WriteString("<h2>")
+		if err != nil {
+			return err
+		}
+		// StringExpression
+		_, err = templBuffer.WriteString(templ.EscapeString(text))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</h2>")
+		if err != nil {
+			return err
+		}
+		if !templIsBuffer {
+			_, err = io.Copy(w, templBuffer)
+		}
+		return err
+	})
+}
+
+func Header3(text string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		templBuffer, templIsBuffer := w.(*bytes.Buffer)
+		if !templIsBuffer {
+			templBuffer = new(bytes.Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		var_6 := templ.GetChildren(ctx)
+		if var_6 == nil {
+			var_6 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		// Element (standard)
+		_, err = templBuffer.WriteString("<h3>")
+		if err != nil {
+			return err
+		}
+		// StringExpression
+		_, err = templBuffer.WriteString(templ.EscapeString(text))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</h3>")
+		if err != nil {
+			return err
+		}
+		if !templIsBuffer {
+			_, err = io.Copy(w, templBuffer)
+		}
+		return err
+	})
+}
+
+func Header4(text string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		templBuffer, templIsBuffer := w.(*bytes.Buffer)
+		if !templIsBuffer {
+			templBuffer = new(bytes.Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		var_7 := templ.GetChildren(ctx)
+		if var_7 == nil {
+			var_7 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		// Element (standard)
+		_, err = templBuffer.WriteString("<h4>")
+		if err != nil {
+			return err
+		}
+		// StringExpression
+		_, err = templBuffer.WriteString(templ.EscapeString(text))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</h4>")
+		if err != nil {
+			return err
+		}
+		if !templIsBuffer {
+			_, err = io.Copy(w, templBuffer)
+		}
+		return err
+	})
+}
+
+func Header5(text string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		templBuffer, templIsBuffer := w.(*bytes.Buffer)
+		if !templIsBuffer {
+			templBuffer = new(bytes.Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		var_8 := templ.GetChildren(ctx)
+		if var_8 == nil {
+			var_8 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		// Element (standard)
+		_, err = templBuffer.WriteString("<h5>")
+		if err != nil {
+			return err
+		}
+		// StringExpression
+		_, err = templBuffer.WriteString(templ.EscapeString(text))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</h5>")
+		if err != nil {
+			return err
+		}
+		if !templIsBuffer {
+			_, err = io.Copy(w, templBuffer)
+		}
+		return err
+	})
+}
+
+func Header6(text string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		templBuffer, templIsBuffer := w.(*bytes.Buffer)
+		if !templIsBuffer {
+			templBuffer = new(bytes.Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		var_9 := templ.GetChildren(ctx)
+		if var_9 == nil {
+			var_9 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		// Element (standard)
+		_, err = templBuffer.WriteString("<h6>")
+		if err != nil {
+			return err
+		}
+		// StringExpression
+		_, err = templBuffer.WriteString(templ.EscapeString(text))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</h6>")
+		if err != nil {
+			return err
+		}
+		if !templIsBuffer {
+			_, err = io.Copy(w, templBuffer)
+		}
+		return err
+	})
+}
+
