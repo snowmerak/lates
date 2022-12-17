@@ -102,7 +102,7 @@ func Input(name, placeholder, typ string) templ.Component {
 	})
 }
 
-func SubmitInput(name string) templ.Component {
+func InputSubmit(name string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
 		templBuffer, templIsBuffer := w.(*bytes.Buffer)
 		if !templIsBuffer {
@@ -167,7 +167,7 @@ func SubmitInput(name string) templ.Component {
 	})
 }
 
-func ResetInput(name string) templ.Component {
+func InputReset(name string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
 		templBuffer, templIsBuffer := w.(*bytes.Buffer)
 		if !templIsBuffer {
