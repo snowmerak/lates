@@ -1,5 +1,7 @@
 package made
 
+import "strconv"
+
 templ Break() {
     <br />
 }
@@ -18,6 +20,10 @@ templ Span(text string) {
 
 templ A(text string, href templ.SafeURL) {
     <a href={href}>{text}</a>
+}
+
+templ Textarea(name string, rows int64, forForm string) {
+    <textarea name={name} form={forForm} rows={strconv.FormatInt(rows, 10)}></textarea>
 }
 
 templ Header1(text string) {
