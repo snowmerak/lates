@@ -1,0 +1,72 @@
+package made
+
+css NoWrap() {
+    flex-wrap: nowrap;
+}
+
+css Wrap() {
+    flex-wrap: wrap;
+}
+
+css WrapReverse() {
+    flex-wrap: wrap-reverse;
+}
+
+css Center() {
+    align-items: center;
+    justify-content: center;
+}
+
+css Start() {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+css End() {
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+css SpaceBetween() {
+    justify-content: space-between;
+}
+
+css SpaceAround() {
+    justify-content: space-around;
+}
+
+css Column() {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+css ColumnReverse() {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column-reverse;
+}
+
+css Row() {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+css RowReverse() {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row-reverse;
+}
+
+templ Box(comp []templ.Component, css ...templ.CSSClass) {
+    <div class={templ.Classes(css...)}>
+        for _, c := range comp {
+            {! c}
+        }
+    </div>
+}
