@@ -31,6 +31,20 @@ func Layout(child templ.Component, cssPath ...string) templ.Component {
 		if err != nil {
 			return err
 		}
+		// Element (void)
+		_, err = templBuffer.WriteString("<meta")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" charset=\"utf-8\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
+		if err != nil {
+			return err
+		}
 		// For
 		for _, path := range cssPath {
 			// Element (void)

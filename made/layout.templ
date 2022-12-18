@@ -3,6 +3,7 @@ package made
 templ Layout(child templ.Component, cssPath ...string) {
     <html>
         <head>
+        <meta charset="utf-8" />
             for _, path := range cssPath {
                 <link rel="stylesheet" href={path} />
             }
