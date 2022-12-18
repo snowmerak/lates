@@ -14,3 +14,19 @@ func Alert(text string) templ.ComponentScript {
 	}
 }
 
+func ConsoleLog(text string) templ.ComponentScript {
+	return templ.ComponentScript{
+		Name: `__templ_ConsoleLog_25ce`,
+		Function: `function __templ_ConsoleLog_25ce(text){console.log(text);}`,
+		Call: templ.SafeScript(`__templ_ConsoleLog_25ce`, text),
+	}
+}
+
+func ConsoleError(text string) templ.ComponentScript {
+	return templ.ComponentScript{
+		Name: `__templ_ConsoleError_0163`,
+		Function: `function __templ_ConsoleError_0163(text){console.error(text);}`,
+		Call: templ.SafeScript(`__templ_ConsoleError_0163`, text),
+	}
+}
+

@@ -12,6 +12,14 @@ templ Label(text string, target string) {
     <label for={target}>{text}</label>
 }
 
+templ Span(text string) {
+    <span>{text}</span>
+}
+
+templ A(text string, href templ.SafeURL) {
+    <a href={href}>{text}</a>
+}
+
 templ Header1(text string) {
     <h1>{text}</h1>
 }
