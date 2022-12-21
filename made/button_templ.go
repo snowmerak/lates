@@ -9,7 +9,7 @@ import "context"
 import "io"
 import "bytes"
 
-func Button(text, typ string, onClick templ.ComponentScript) templ.Component {
+func Button(text string, onClick templ.ComponentScript) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
 		templBuffer, templIsBuffer := w.(*bytes.Buffer)
 		if !templIsBuffer {
@@ -49,19 +49,91 @@ func Button(text, typ string, onClick templ.ComponentScript) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString(" type=")
+		_, err = templBuffer.WriteString(" type=\"button\"")
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("\"")
+		_, err = templBuffer.WriteString(">")
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString(templ.EscapeString(typ))
+		// StringExpression
+		_, err = templBuffer.WriteString(templ.EscapeString(text))
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("\"")
+		_, err = templBuffer.WriteString("</button>")
+		if err != nil {
+			return err
+		}
+		if !templIsBuffer {
+			_, err = io.Copy(w, templBuffer)
+		}
+		return err
+	})
+}
+
+func SubmitButton(text string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		templBuffer, templIsBuffer := w.(*bytes.Buffer)
+		if !templIsBuffer {
+			templBuffer = new(bytes.Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		var_3 := templ.GetChildren(ctx)
+		if var_3 == nil {
+			var_3 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		// Element (standard)
+		_, err = templBuffer.WriteString("<button")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" type=\"submit\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
+		if err != nil {
+			return err
+		}
+		// StringExpression
+		_, err = templBuffer.WriteString(templ.EscapeString(text))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</button>")
+		if err != nil {
+			return err
+		}
+		if !templIsBuffer {
+			_, err = io.Copy(w, templBuffer)
+		}
+		return err
+	})
+}
+
+func ResetButton(text string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		templBuffer, templIsBuffer := w.(*bytes.Buffer)
+		if !templIsBuffer {
+			templBuffer = new(bytes.Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		var_4 := templ.GetChildren(ctx)
+		if var_4 == nil {
+			var_4 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		// Element (standard)
+		_, err = templBuffer.WriteString("<button")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" type=\"reset\"")
 		if err != nil {
 			return err
 		}

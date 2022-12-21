@@ -1,7 +1,15 @@
 package made
 
-templ Button(text, typ string, onClick templ.ComponentScript) {
-    <button onClick={onClick} type={typ}>
+templ Button(text string, onClick templ.ComponentScript) {
+    <button onClick={onClick} type="button">
         {text}
     </button>
+}
+
+templ SubmitButton(text string) {
+    <button type="submit">{text}</button>
+}
+
+templ ResetButton(text string) {
+    <button type="reset">{text}</button>
 }
